@@ -31,7 +31,6 @@ public class BubbleSort implements Sorter {
             loopEnd--;
         }
 
-        // Printer.printIntArray(numberArray);
         return BubbleSort.numberArray;
     }
 
