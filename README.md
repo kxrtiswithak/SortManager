@@ -8,9 +8,10 @@
 A java project containing different sorting algorithms, utilising interfaces and adhering to [SOLID][solid] principles
 
 Contains the below algorithms:
-- bubble sort  
+- [bubble sort][bubble-sort]
 
 
 ---
 
 [solid]: https://itnext.io/solid-principles-explanation-and-examples-715b975dcad4
+[bubble-sort]: src/com/sparta/kurtis/sorter/BubbleSort.java
