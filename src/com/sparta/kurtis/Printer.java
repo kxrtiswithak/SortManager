@@ -8,10 +8,14 @@ public class Printer {
     }
 
     public static void printIntArray(int[] numberArray) {
-        System.out.print(Arrays.toString(numberArray));
+        System.out.println(Arrays.toString(numberArray));
     }
 
     public static void printErrorMessage(String message) {
         System.err.println(message);
+    }
+
+    public static void printInt(int number) {
+        System.out.println(number);
     }
 }
