@@ -2,18 +2,20 @@ package com.sparta.kurtis.sorter;
 
 import com.sparta.kurtis.Printer;
 
-public class MergeArray {
-    public static int[] mergeSortArray(int[] numberArray) {
-        return mergeSortArray(numberArray, 0, numberArray.length - 1);
+public class MergeArray implements Sorter {
+
+    @Override
+    public int[] sortArray(int[] arrayToSort) {
+        return mergeSortArray(arrayToSort, 0, arrayToSort.length - 1);
     }
 
-    public static int[] mergeSortTwoArrays(int[] numberArray1, int[] numberArray2) {
+    public int[] sortTwoArrays(int[] numberArray1, int[] numberArray2) {
         int[] arraysCombined = combineTwoArrays(numberArray1, numberArray2);
 
-        return mergeSortArray(arraysCombined);
+        return sortArray(arraysCombined);
     }
 
-    public static int[] mergeTwoSortedArrays(int[] numberArray1, int[] numberArray2) {
+    public int[] mergeTwoSortedArrays(int[] numberArray1, int[] numberArray2) {
         if (isArraySorted(numberArray1) && isArraySorted(numberArray2)) {
             int[] arraysCombined = combineTwoArrays(numberArray1, numberArray2);
             int midIndex = numberArray1.length - 1;
@@ -26,7 +28,7 @@ public class MergeArray {
         }
     }
 
-    private static int[] mergeArray(int[] numberArray, int beginIndex, int midIndex, int endIndex) {
+    private int[] mergeArray(int[] numberArray, int beginIndex, int midIndex, int endIndex) {
 
         int leftLength = midIndex - beginIndex + 1;
         int rightLength = endIndex - midIndex;
@@ -68,7 +70,7 @@ public class MergeArray {
         return numberArray;
     }
 
-    private static boolean isArraySorted(int[] numberArray) {
+    private boolean isArraySorted(int[] numberArray) {
         for (int i = 0; i < numberArray.length - 1; i++) {
             if (numberArray[i] > numberArray[i + 1]) {
                 return false;
@@ -78,7 +80,7 @@ public class MergeArray {
         return true;
     }
 
-    private static int[] mergeSortArray(int[] numberArray, int beginIndex, int endIndex) {
+    private int[] mergeSortArray(int[] numberArray, int beginIndex, int endIndex) {
         if (beginIndex < endIndex) {
             int midIndex = (beginIndex + endIndex) / 2;
             numberArray = mergeSortArray(numberArray, beginIndex, midIndex);
@@ -90,7 +92,7 @@ public class MergeArray {
         return numberArray;
     }
 
-    private static int[] combineTwoArrays(int[] numberArray1, int[] numberArray2) {
+    private int[] combineTwoArrays(int[] numberArray1, int[] numberArray2) {
         int[] arraysCombined = new int[numberArray1.length + numberArray2.length];
         System.arraycopy(numberArray1, 0, arraysCombined, 0, numberArray1.length);
         System.arraycopy(numberArray2, 0, arraysCombined, numberArray1.length, numberArray2.length);

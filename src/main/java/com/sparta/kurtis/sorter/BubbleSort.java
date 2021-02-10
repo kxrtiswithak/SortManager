@@ -5,17 +5,18 @@ import com.sparta.kurtis.Printer;
 public class BubbleSort implements Sorter {
     private static int[] numberArray;
 
-     public int[] sortArray(int[] numberArray) {
+    public int[] sortArray(int[] numberArray) {
         BubbleSort.numberArray = numberArray;
-        if (BubbleSort.numberArray.length == 0) {
-            Printer.printErrorMessage("naughty naughty, you teasing me with your empty array");
-            return BubbleSort.numberArray;
-        }
+        // if (BubbleSort.numberArray.length == 0) {
+        //     Printer.printErrorMessage("naughty naughty, you teasing me with your empty array");
+        //     return BubbleSort.numberArray;
+        // }
 
         int loopEnd = BubbleSort.numberArray.length - 1;
         boolean isAlreadySorted = true;
 
-        alreadySorted: while (loopEnd > 0) {
+        alreadySorted:
+        while (loopEnd > 0) {
             for (int i = 0; i < loopEnd; i++) {
                 if (BubbleSort.numberArray[i] > BubbleSort.numberArray[i + 1]) {
                     isAlreadySorted = false;
