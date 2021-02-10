@@ -1,10 +1,13 @@
-package com.sparta.kurtis;
+package com.sparta.kurtis.view;
 
 import java.util.Arrays;
 
 public class Printer {
     public static void printString(String message) {
         System.out.println(message);
+    }
+    public static void printString() {
+        System.out.println();
     }
 
     public static void printIntArray(int[] numberArray) {

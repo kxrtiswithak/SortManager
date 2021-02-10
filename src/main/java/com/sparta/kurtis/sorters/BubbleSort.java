@@ -1,16 +1,26 @@
-package com.sparta.kurtis.sorter;
+package com.sparta.kurtis.sorters;
 
-import com.sparta.kurtis.Printer;
+import com.sparta.kurtis.exceptions.EmptyArrayException;
+import com.sparta.kurtis.view.Printer;
 
 public class BubbleSort implements Sorter {
     private static int[] numberArray;
 
+    @Override
     public int[] sortArray(int[] numberArray) {
         BubbleSort.numberArray = numberArray;
-        // if (BubbleSort.numberArray.length == 0) {
-        //     Printer.printErrorMessage("naughty naughty, you teasing me with your empty array");
-        //     return BubbleSort.numberArray;
-        // }
+
+        try {
+            if (BubbleSort.numberArray == null || BubbleSort.numberArray.length == 0) {
+                throw new EmptyArrayException("naughty naughty, you teasing me with your empty array");
+            }
+        } catch (EmptyArrayException e) {
+            e.printStackTrace();
+            return null;
+        }  catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
 
         int loopEnd = BubbleSort.numberArray.length - 1;
         boolean isAlreadySorted = true;
