@@ -21,4 +21,8 @@ public class Printer {
     public static void printInt(int number) {
         System.out.println(number);
     }
+
+    public static void printPerformanceTestString(String message, long time) {
+        System.out.printf(message, time);
+    }
 }
