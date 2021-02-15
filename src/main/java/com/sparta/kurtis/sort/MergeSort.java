@@ -1,9 +1,8 @@
-package com.sparta.kurtis.sorters;
+package com.sparta.kurtis.sort;
 
 import com.sparta.kurtis.exceptions.EmptyArrayException;
 import com.sparta.kurtis.exceptions.SortedArrayException;
 import com.sparta.kurtis.exceptions.UnsortedArrayException;
-import com.sparta.kurtis.view.Printer;
 
 public class MergeSort implements Sorter {
 
@@ -24,7 +23,7 @@ public class MergeSort implements Sorter {
 
         try {
             if (isArraySorted(arrayToSort)) {
-                throw new SortedArrayException("don't wasted my time smh");
+                throw new SortedArrayException("don't waste my time smh");
             }
         } catch (SortedArrayException e) {
             e.printStackTrace();

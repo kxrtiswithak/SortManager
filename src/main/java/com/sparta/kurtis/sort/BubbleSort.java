@@ -1,7 +1,7 @@
-package com.sparta.kurtis.sorters;
+package com.sparta.kurtis.sort;
 
 import com.sparta.kurtis.exceptions.EmptyArrayException;
-import com.sparta.kurtis.view.Printer;
+import com.sparta.kurtis.print.Printer;
 
 public class BubbleSort implements Sorter {
     private static int[] numberArray;
