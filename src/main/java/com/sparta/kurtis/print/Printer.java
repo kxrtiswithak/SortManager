@@ -1,4 +1,4 @@
-package com.sparta.kurtis.view;
+package com.sparta.kurtis.print;
 
 import java.util.Arrays;
 
