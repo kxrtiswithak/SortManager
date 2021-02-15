@@ -1,12 +1,11 @@
-package com.sparta.kurtis.binarytree;
+package com.sparta.kurtis.sort;
 
 import com.sparta.kurtis.exceptions.ChildNotFoundException;
-import com.sparta.kurtis.exceptions.EmptyBinaryTreeException;
 
-public class BinaryTreeImpl implements BinaryTree {
+public class BinaryTreeSort implements BinaryTree {
     static class Node {
-        Node left, right;
-        int value;
+        public Node left, right;
+        public int value;
 
         public Node(int value) {
             this.value = value;
@@ -16,28 +15,22 @@ public class BinaryTreeImpl implements BinaryTree {
 
     Node root;
     int size;
+    private int count;
+    private int[] arr;
 
-    public BinaryTreeImpl(int value) {
+
+    public BinaryTreeSort(int value) {
         this.root = new Node(value);
     }
 
-    public BinaryTreeImpl() {
+    public BinaryTreeSort() {
         this.root = null;
     }
 
 
     @Override
     public int getRootElement() {
-        try {
-            if (root != null) {
-                return root.value;
-            } else {
-                throw new EmptyBinaryTreeException("you have no root, like a river without water, a pitiful sight");
-            }
-        } catch (EmptyBinaryTreeException e) {
-            e.printStackTrace();
-            return root.value;
-        }
+        return root.value;
     }
 
     @Override
@@ -47,54 +40,99 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public void addElement(int element) {
-        if (root == null) {
-            root = new Node(element);
-        }
-
-        Node current  = root;
-
-        while (current.left != null || current.right != null) {
-            if (element < current.value) {
-                current = current.left;
-            } else if (element >= current.value) {
-                current = current.right;
-            }
-        }
-
-        // if (element) {
-
-        // }
+        root = addRecursive(root, element);
         size++;
+    }
 
+    public Node addRecursive(Node current, int element) {
+        if (current == null) {
+            current = new Node(element);
+            return current;
+        }
+
+        if (element < current.value) {
+            current.left = addRecursive(current.left, element);
+        } else if (element > current.value) {
+            current.right = addRecursive(current.right, element);
+        }
+
+        return current;
     }
 
     @Override
     public void addElements(int[] elements) {
-
+        for (int element : elements) {
+            addElement(element);
+        }
     }
 
     @Override
     public boolean findElement(int value) {
+        if (searchElement(root, value) != null) {
+            return true;
+        }
         return false;
+    }
+
+    private Node searchElement(Node root, int element) {
+        if (root == null) {
+            return null;
+        } else if (element == root.value) {
+            return root;
+        } else if (element > root.value) {
+            return searchElement(root.right, element);
+        } else {
+            return searchElement(root.left, element);
+        }
     }
 
     @Override
     public int getLeftChild(int element) throws ChildNotFoundException {
-        return 0;
+        if (!findElement(element)) {
+            throw new ChildNotFoundException("no kids over here");
+        } else {
+            return searchElement(root, element).left.value;
+        }
     }
 
     @Override
     public int getRightChild(int element) throws ChildNotFoundException {
-        return 0;
+        if (!findElement(element)) {
+            throw new ChildNotFoundException("no kids over here");
+        } else {
+            return searchElement(root, element).right.value;
+        }
     }
 
     @Override
     public int[] getSortedTreeAsc() {
-        return new int[0];
+        arr = new int[size];
+        count = 0;
+        ascRecursive(root);
+        return arr;
+    }
+
+    private void ascRecursive(Node current) {
+        if (current != null) {
+            ascRecursive(current.left);
+            arr[count++] = current.value;
+            ascRecursive(current.right);
+        }
     }
 
     @Override
     public int[] getSortedTreeDesc() {
-        return new int[0];
+        arr = new int[size];
+        count = 0;
+        descRecursive(root);
+        return null;
+    }
+
+    private void descRecursive(Node current) {
+        if (current != null) {
+            descRecursive(current.right);
+            arr[count++] = current.value;
+            descRecursive(current.left);
+        }
     }
 }
