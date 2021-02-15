@@ -1,5 +1,8 @@
 package com.sparta.kurtis.sort;
 
+import com.sparta.kurtis.tree.BinaryTree;
+import com.sparta.kurtis.tree.BinaryTreeSort;
+
 public class SortFactory {
     public Sorter getSort(String sortType) {
 

@@ -1,6 +1,7 @@
-package com.sparta.kurtis.sort;
+package com.sparta.kurtis.tree;
 
 import com.sparta.kurtis.exceptions.ChildNotFoundException;
+import com.sparta.kurtis.tree.BinaryTree;
 
 public class BinaryTreeSort implements BinaryTree {
     static class Node {

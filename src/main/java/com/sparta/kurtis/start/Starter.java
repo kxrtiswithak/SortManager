@@ -2,8 +2,7 @@ package com.sparta.kurtis.start;
 
 import com.sparta.kurtis.sort.*;
 import com.sparta.kurtis.print.Printer;
-
-import java.util.Random;
+import com.sparta.kurtis.tree.BinaryTree;
 
 public class Starter {
     private static SortFactory sortFactory = new SortFactory();

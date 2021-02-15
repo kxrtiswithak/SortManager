@@ -1,4 +1,4 @@
-package com.sparta.kurtis.sort;
+package com.sparta.kurtis.tree;
 
 import com.sparta.kurtis.exceptions.ChildNotFoundException;
 
