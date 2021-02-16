@@ -10,7 +10,7 @@ public class BinaryTreePerformanceTests extends PerformanceTests {
 
     @Override
     @BeforeEach
-    void sorter() {
+    public void sorter() {
         treeSorter = new SortFactory().getTreeSort("binary");
     }
 

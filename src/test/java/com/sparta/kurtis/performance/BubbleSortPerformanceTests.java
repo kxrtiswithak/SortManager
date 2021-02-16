@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class BubbleSortPerformanceTests extends PerformanceTests {
     @Override
     @BeforeEach
-    void sorter() {
+    public void sorter() {
         sorter = new SortFactory().getSort("bubble");
     }
 
