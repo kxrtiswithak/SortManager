@@ -1,54 +1,26 @@
 package com.sparta.kurtis.sort;
 
-import com.sparta.kurtis.exceptions.EmptyArrayException;
-import com.sparta.kurtis.exceptions.SortedArrayException;
-import com.sparta.kurtis.exceptions.UnsortedArrayException;
-
 public class MergeSort implements Sorter {
 
     @Override
     public int[] sortArray(int[] arrayToSort) {
 
-        try {
-            if (arrayToSort == null || arrayToSort.length == 0) {
-                throw new EmptyArrayException("don't test me, cheeky little minx");
-            }
-        } catch (EmptyArrayException e) {
-            e.printStackTrace();
-            return null;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+        if (arrayToSort == null || arrayToSort.length == 0) {
+            throw new IllegalArgumentException("don't test me, cheeky little minx, nothing here");
         }
 
-        try {
-            if (isArraySorted(arrayToSort)) {
-                throw new SortedArrayException("don't waste my time smh");
-            }
-        } catch (SortedArrayException e) {
-            e.printStackTrace();
-            return arrayToSort;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+        if (isArraySorted(arrayToSort)) {
+            throw new IllegalArgumentException("don't waste my time smh, already sorted");
         }
 
         return mergeSortArray(arrayToSort, 0, arrayToSort.length - 1);
     }
 
     public int[] sortTwoArrays(int[] numberArray1, int[] numberArray2) {
-        try {
-            boolean areArraysNull = numberArray1 == null || numberArray2 == null;
-            boolean areArraysEmpty = numberArray1.length == 0 || numberArray2.length == 0;
-            if (areArraysNull || areArraysEmpty) {
-                throw new EmptyArrayException("oh stop it, trying to make me act up...");
-            }
-        } catch (EmptyArrayException e) {
-            e.printStackTrace();
-            return null;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+        boolean areArraysNull = numberArray1 == null || numberArray2 == null;
+        boolean areArraysEmpty = numberArray1.length == 0 || numberArray2.length == 0;
+        if (areArraysNull || areArraysEmpty) {
+            throw new IllegalArgumentException("oh stop it, trying to make me act up...with nothing to sort you leave me no choice but to sort you out");
         }
 
         int[] arraysCombined = combineTwoArrays(numberArray1, numberArray2);
@@ -57,31 +29,20 @@ public class MergeSort implements Sorter {
     }
 
     public int[] mergeTwoSortedArrays(int[] numberArray1, int[] numberArray2) {
-        try {
-            boolean areArraysNull = numberArray1 == null || numberArray2 == null;
-            boolean areArraysEmpty = numberArray1.length == 0 || numberArray2.length == 0;
-            if (areArraysNull || areArraysEmpty) {
-                throw new EmptyArrayException("you should know by now this ain't working");
-            }
+        boolean areArraysNull = numberArray1 == null || numberArray2 == null;
+        boolean areArraysEmpty = numberArray1.length == 0 || numberArray2.length == 0;
+        if (areArraysNull || areArraysEmpty) {
+            throw new IllegalArgumentException("you should know by now this ain't working");
+        }
 
-            if (isArraySorted(numberArray1) && isArraySorted(numberArray2)) {
-                int[] arraysCombined = combineTwoArrays(numberArray1, numberArray2);
-                int midIndex = numberArray1.length - 1;
-                int endIndex = arraysCombined.length - 1;
+        if (isArraySorted(numberArray1) && isArraySorted(numberArray2)) {
+            int[] arraysCombined = combineTwoArrays(numberArray1, numberArray2);
+            int midIndex = numberArray1.length - 1;
+            int endIndex = arraysCombined.length - 1;
 
-                return mergeArray(arraysCombined, 0, midIndex, endIndex);
-            } else {
-                throw new UnsortedArrayException("Stop! You violated the law. Pay the court a fine \nor serve your sentence. Your stolen goods are \nnow forfeit. Or just use sorted arrays, I'm easy \neither way tbh");
-            }
-        } catch (EmptyArrayException e) {
-            e.printStackTrace();
-            return null;
-        } catch (UnsortedArrayException e) {
-            e.printStackTrace();
-            return null;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            return mergeArray(arraysCombined, 0, midIndex, endIndex);
+        } else {
+            throw new IllegalArgumentException("Stop! You violated the law. Pay the court a fine \nor serve your sentence. Your stolen goods are \nnow forfeit. Or just use sorted arrays, I'm easy \neither way tbh");
         }
 
     }

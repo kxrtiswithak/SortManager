@@ -1,6 +1,5 @@
 package com.sparta.kurtis.sort;
 
-import com.sparta.kurtis.exceptions.EmptyArrayException;
 import com.sparta.kurtis.print.Printer;
 
 public class BubbleSort implements Sorter {
@@ -10,18 +9,9 @@ public class BubbleSort implements Sorter {
     public int[] sortArray(int[] numberArray) {
         BubbleSort.numberArray = numberArray;
 
-        try {
-            if (BubbleSort.numberArray == null || BubbleSort.numberArray.length == 0) {
-                throw new EmptyArrayException("naughty naughty, you teasing me with your empty array");
-            }
-        } catch (EmptyArrayException e) {
-            e.printStackTrace();
-            return null;
-        }  catch (Exception e) {
-            e.printStackTrace();
-            return null;
+        if (BubbleSort.numberArray == null || BubbleSort.numberArray.length == 0) {
+            throw new IllegalArgumentException("naughty naughty, you teasing me with your empty array");
         }
-
         int loopEnd = BubbleSort.numberArray.length - 1;
         boolean isAlreadySorted = true;
 
